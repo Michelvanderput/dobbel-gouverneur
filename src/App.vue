@@ -18,7 +18,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 button {
@@ -45,6 +44,13 @@ li {
   background-color: #eee;
   border-radius: 8px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h5 {
+  margin: 0;
 }
 
 h3 {

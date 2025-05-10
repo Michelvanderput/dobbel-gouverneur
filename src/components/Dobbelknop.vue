@@ -25,11 +25,13 @@ export default {
       const gekozenIndex = Math.floor(Math.random() * this.categorieën.length);
       const gekozenCategorie = this.categorieën[gekozenIndex];
 
-      const totaalStappen = this.categorieën.length * 4 + gekozenIndex;
+      const rondes = 3;
+      const totaalStappen = rondes * this.categorieën.length + gekozenIndex;
+
       let index = 0;
       let stappen = 0;
 
-      const interval = setInterval(() => {
+      const animate = () => {
         const huidige = this.categorieën[index % this.categorieën.length];
         this.$emit("highlight", huidige);
 
@@ -37,11 +39,19 @@ export default {
         index++;
 
         if (stappen > totaalStappen) {
-          clearInterval(interval);
           this.isDobbelen = false;
           this.$emit("categorieGekozen", gekozenCategorie);
+          return;
         }
-      }, 100);
+
+        // Progressieve vertraging (easing)
+        const progress = stappen / totaalStappen;
+        const delay = 50 + 300 * Math.pow(progress, 2); // snel begin, langzaam eind
+
+        setTimeout(animate, delay);
+      };
+
+      animate();
     },
   },
 };

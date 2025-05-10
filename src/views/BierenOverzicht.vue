@@ -18,7 +18,8 @@
           geselecteerd: bier === geselecteerdBier,
         }"
       >
-        <h3>{{ bier.naam }}</h3>
+        <h5>{{ bier.naam }}</h5>
+        <div class="categorie_percentage">{{ bier.alcoholPercentage }}</div>
       </li>
     </ul>
 
@@ -79,14 +80,13 @@ export default {
 <style scoped>
 .bieren-overzicht {
   text-align: center;
-  padding: 20px;
 }
 
 ul {
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -124,5 +124,18 @@ li.geselecteerd {
   background-color: #ffce00;
   font-weight: bold;
   color: #000;
+}
+
+.categorie_percentage {
+  color: royalblue;
+  font-weight: bold;
+  height: 12px;
+  width: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: 20px;
+  font-size: 0.8em;
 }
 </style>

@@ -8,7 +8,8 @@
         :key="categorie"
         :class="{ actief: categorie === actieveCategorie }"
       >
-        <h3>{{ categorie + " (" + categorie.length + ")" }}</h3>
+        <h5>{{ categorie }}</h5>
+        <div class="categorie_lengte">{{ categorie.length }}</div>
       </li>
     </ul>
 
@@ -86,10 +87,36 @@ ul {
 }
 
 li {
-  padding: 10px 20px;
+  padding: 10px;
   background-color: #eee;
   border-radius: 8px;
   transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categorie_lengte {
+  color: royalblue;
+  font-weight: bold;
+  height: 12px;
+  width: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.categorie_informatie {
+  background-color: lightblue;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
 li.actief {

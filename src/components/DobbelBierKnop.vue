@@ -23,11 +23,13 @@ export default {
       const gekozenIndex = Math.floor(Math.random() * this.bieren.length);
       const gekozenBier = this.bieren[gekozenIndex];
 
-      const totaalStappen = this.bieren.length * 4 + gekozenIndex;
+      const rondes = 3;
+      const totaalStappen = rondes * this.bieren.length + gekozenIndex;
+
       let index = 0;
       let stappen = 0;
 
-      const interval = setInterval(() => {
+      const animate = () => {
         const huidig = this.bieren[index % this.bieren.length];
         this.$emit("highlight", huidig);
 
@@ -35,11 +37,19 @@ export default {
         index++;
 
         if (stappen > totaalStappen) {
-          clearInterval(interval);
           this.isDobbelen = false;
           this.$emit("bierGekozen", gekozenBier);
+          return;
         }
-      }, 100);
+
+        // Progressieve vertraging (easing)
+        const progress = stappen / totaalStappen;
+        const delay = 50 + 300 * Math.pow(progress, 2); // snel in begin, langzaam aan eind
+
+        setTimeout(animate, delay);
+      };
+
+      animate();
     },
   },
 };
