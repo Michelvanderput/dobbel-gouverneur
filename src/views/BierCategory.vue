@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import DobbelKnop from "@/components/DobbelKnop.vue";
+import DobbelKnop from "@/components/Dobbelknop.vue";
 
 export default {
   name: "BierCategorieën",
